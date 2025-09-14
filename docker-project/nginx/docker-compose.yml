@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+      - ./certs:/etc/letsencrypt
+      - ./certs-data:/data/letsencrypt
+    networks:
+      - web
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ./certs:/etc/letsencrypt
+      - ./certs-data:/data/letsencrypt
+    entrypoint: /bin/sh
+    networks:
+      - web
+
+networks:
+  web:
+    external: false
