@@ -1,0 +1,53 @@
+# git
+sudo apt install git
+
+# download .deb files: chorme, vscode, 
+
+
+# input method SOUGOU:
+# 1. Install Required Dependencies
+sudo apt update
+sudo apt install fcitx fcitx-bin fcitx-table fcitx-config-gtk fcitx-ui-classic im-config
+
+wget https://cdn2.ime.sogou.com/dl/index/1656392822/sogoupinyin_2.4.0.3468_amd64.deb
+
+sudo apt install fcitx
+
+sudo cp /usr/share/applications/fcitx.desktop /etc/xdg/autostart/
+
+sudo apt purge ibus
+
+# 链接pycharm:
+sudo nano /usr/share/applications/pycharm.desktop
+
+
+# conda:
+# 下载 Miniconda 安装脚本 (以 Python 3.12 版本为例)
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+# 赋予执行权限
+chmod +x Miniconda3-latest-Linux-x86_64.sh
+
+# 运行安装脚本
+./Miniconda3-latest-Linux-x86_64.sh
+
+source ~/.bashrc
+conda --version
+
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
+
+
+# torch
+# 建议新建环境
+conda create -n deep_learning python=3.10 -y
+conda activate deep_learning
+
+# 安装 PyTorch + CUDA 12.1 （与你的驱动550兼容）
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+
+pip install numpy pandas matplotlib scikit-learn scipy jupyter jupyterlab notebook \
+    requests beautifulsoup4
+
+
+
